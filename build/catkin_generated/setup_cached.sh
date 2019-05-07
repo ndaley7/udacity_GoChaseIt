@@ -7,7 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/robond/Desktop/UdacityProjects/Gochaseit/catkin_ws/devel:$CMAKE_PREFIX_PATH"
 export PWD="/home/robond/Desktop/UdacityProjects/Gochaseit/catkin_ws/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/robond/Desktop/UdacityProjects/Gochaseit/catkin_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/robond/Desktop/UdacityProjects/Gochaseit/catkin_ws/src:$ROS_PACKAGE_PATH"
+export PYTHONPATH="/home/robond/Desktop/UdacityProjects/Gochaseit/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
