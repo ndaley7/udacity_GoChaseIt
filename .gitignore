@@ -36,4 +36,4 @@ devel/
 build/
 
 #Files
-*CMakeLists.txt
+*.catkin_workspace
