@@ -26,58 +26,85 @@ void process_image_callback(const sensor_msgs::Image img)
 {
     //Assign Variables
     int white_pixel = 255;
-    bool ball_left = false;
-    bool ball_mid = false;
-    bool ball_right = false;
+    //White pixel Averaging variables
+    int white_pixel_xtotal=0;
+    int white_pixel_count=0;
+    int white_pixel_xmean=0;
+    
+
 
     //Dividing image width into three so alorithim works independent of width.
-    int img_width=img.width/3
+    int img_width=img.step/3;
 
     // TODO: Loop through each pixel in the image and check if there's a bright white one
     // Then, identify if this pixel falls in the left, mid, or right side of the image
     // Depending on the white ball position, call the drive_bot function and pass velocities to it
     // Request a stop when there's no white ball seen by the camera
     // Loop through each pixel in the image and check if its equal to the first one
-    for(int i=0; i<img.height; i++)
+
+    //Adding an averaging function to ensure all white pixels taken into account
+    for (int i = 0; i < img.height * img.step; i++) 
     {
-        for(int j=0; j<img.width; j++)
+        if (img.data[i] == white_pixel) 
         {
-            if (img.data[(i*img.height+j*img.width)] == white_pixel)
-            {
-                if(j<img_width)
-                {
+            white_pixel_count++;
+
+            white_pixel_xtotal=white_pixel_xtotal+(i%img.step);
+            //ROS_INFO("White pixel @ (i):%1.2f ",(float)(i));
+            
+        }
+    }
+
+   
+    if(white_pixel_count>0)
+    {
+        //Calculated x and y averages
+        white_pixel_xmean=white_pixel_xtotal/white_pixel_count;
+        
+        ROS_INFO("White pixel x centroid @ (x):%1.2f,  L/U Limits:%1.2f , %1.2f ", (float)white_pixel_xmean, (float)(img_width),(float)(img_width)*2);
+
+        if(white_pixel_xmean<(img_width))
+        {
                     //Less than 1/3 means ball is to the left
                     //ball_left=true;
-                    ROS_INFO_STREAM("Driving Left");
-                    drive_robot(0.1,0.5);
+            ROS_INFO_STREAM("Left");
+            drive_robot(0.0,0.01);
 
-                }
-                else if(j>img_width*2)
-                {   
+        }
+        else if(white_pixel_xmean>(img_width)*2)
+        {   
                     //Greater than 2/3 means ball is to the right
                     //ball_right=true;
-                    ROS_INFO_STREAM("Driving Right");
-                    drive_robot(0.1,0.5);
-                }
-                else
-                {
+            ROS_INFO_STREAM("Right");
+            drive_robot(0.0,-0.01);
+        }
+        else if ((img_width)<white_pixel_xmean && white_pixel_xmean<(img_width)*2)
+        {
                     //Assumed True Otherwise
                     //ball_mid=true;
-                    ROS_INFO_STREAM("Drivng Forward");
-                    drive_robot(0.1,0.0);
-                }
-            
-                break;
-            }
-            }
+            ROS_INFO_STREAM("Forward");
+            drive_robot(0.05,0.0);
+        }
+        else 
+        {
+                    //Assumed True Otherwise
 
         }
 
+
     }
-     
-    for (int i = 0; i < img.height * img.step; i++) {
-        
+    else
+    {
+        //ball_mid=true;
+        ROS_INFO_STREAM("No White Pixels Detected, searching...");
+        drive_robot(0.0,0.1);
     }
+
+    
+    
+
+
+    
 }
 
 int main(int argc, char** argv)
