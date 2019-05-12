@@ -3519,40 +3519,6 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='my_robot'>
-        <pose frame=''>4.81126 2.95052 0.100002 0 1e-06 0.609209</pose>
-        <scale>1 1 1</scale>
-        <link name='left2_wheel'>
-          <pose frame=''>4.5204 2.93049 0.100002 -1e-06 -0.01196 0.609209</pose>
-          <velocity>0.000817 0.001249 0.004634 -0.012566 0.008304 0.000562</velocity>
-          <acceleration>1.3016 2.86666 9.25967 3.06512 -0.758148 3.03267</acceleration>
-          <wrench>6.50802 14.3333 46.2984 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose frame=''>4.88945 3.18798 0.100002 0 0.004727 0.609209</pose>
-          <velocity>0.000629 0.001419 -0.0018 -0.012568 0.00818 0.000562</velocity>
-          <acceleration>1.29298 2.7846 -3.42426 -3.04232 -0.672306 2.91668</acceleration>
-          <wrench>6.46489 13.923 -17.1213 0 -0 0</wrench>
-        </link>
-        <link name='right2_wheel'>
-          <pose frame=''>4.69207 2.68445 0.100002 0 0.027779 0.609209</pose>
-          <velocity>0.000805 0.001265 0.006061 -0.012686 0.008113 0.000293</velocity>
-          <acceleration>1.08848 2.82923 12.3942 3.11091 -0.651623 2.5753</acceleration>
-          <wrench>5.44238 14.1461 61.9708 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose frame=''>5.06111 2.94195 0.100002 1e-06 0.176385 0.609209</pose>
-          <velocity>0.000818 0.001354 -0.000131 -0.01356 0.008242 0.000283</velocity>
-          <acceleration>1.53023 2.60141 -0.277001 2.31069 0.381134 2.97241</acceleration>
-          <wrench>7.65117 13.007 -1.385 0 -0 0</wrench>
-        </link>
-        <link name='robot_footprint'>
-          <pose frame=''>4.81126 2.95052 0.100002 0 1e-06 0.609209</pose>
-          <velocity>0.000735 0.001359 0.001842 -0.012663 0.008638 0.000486</velocity>
-          <acceleration>1.21213 2.81288 3.76999 -2.54283 -0.961162 2.96045</acceleration>
-          <wrench>18.3032 42.4745 56.9268 0 -0 0</wrench>
-        </link>
-      </model>
       <model name='sofav1'>
         <pose frame=''>2.41162 2.53942 0.393701 -0 -2e-06 2e-06</pose>
         <scale>1 1 1</scale>

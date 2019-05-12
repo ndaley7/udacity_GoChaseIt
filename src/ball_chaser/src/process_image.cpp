@@ -68,7 +68,7 @@ void process_image_callback(const sensor_msgs::Image img)
                     //Less than 1/3 means ball is to the left
                     //ball_left=true;
             ROS_INFO_STREAM("Left");
-            drive_robot(0.0,0.01);
+            drive_robot(0.0,0.1);
 
         }
         else if(white_pixel_xmean>(img_width)*2)
@@ -76,14 +76,14 @@ void process_image_callback(const sensor_msgs::Image img)
                     //Greater than 2/3 means ball is to the right
                     //ball_right=true;
             ROS_INFO_STREAM("Right");
-            drive_robot(0.0,-0.01);
+            drive_robot(0.0,-0.1);
         }
         else if ((img_width)<white_pixel_xmean && white_pixel_xmean<(img_width)*2)
         {
                     //Assumed True Otherwise
                     //ball_mid=true;
             ROS_INFO_STREAM("Forward");
-            drive_robot(0.05,0.0);
+            drive_robot(0.1,0.0);
         }
         else 
         {
