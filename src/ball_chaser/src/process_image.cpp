@@ -43,9 +43,9 @@ void process_image_callback(const sensor_msgs::Image img)
     // Loop through each pixel in the image and check if its equal to the first one
 
     //Adding an averaging function to ensure all white pixels taken into account
-    for (int i = 0; i < img.height * img.step; i++) 
+    for (int i = 0; i < img.height * img.step; i+3) 
     {
-        if (img.data[i] == white_pixel) 
+        if (img.data[i] == white_pixel && img.data[i+1] == white_pixel && img.data[i+2] == white_pixel) 
         {
             white_pixel_count++;
 
