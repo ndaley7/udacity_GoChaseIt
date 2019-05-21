@@ -15,7 +15,12 @@
       <robotBaseFrame>robot_footprint</robotBaseFrame>
       <torque>10</torque>
       <topicName>cmd_vel</topicName>
-      <broadcastTF>true</broadcastTF>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometrySource>world</odometrySource>
+      <publishTf>1</publishTf>
+       <publishOdomTF>true</publishOdomTF>
     </plugin>
   </gazebo>
 
